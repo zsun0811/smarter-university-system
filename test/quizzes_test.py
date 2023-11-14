@@ -17,7 +17,7 @@ class QuizzesTest(unittest.TestCase):
         None quiz ID, Quiz_controller.py, Line 63
         """
         result = self.ctrl.add_quiz(None,"test",None,None)
-        self.assertIsNotNone(123, result, 'None quiz ID, Quiz_controller.py, Line 63')
+        self.assertIsNone(result, 'None quiz ID, Quiz_controller.py, Line 63')
         
 
 

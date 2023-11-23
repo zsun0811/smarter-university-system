@@ -18,8 +18,23 @@ class QuizzesTest(unittest.TestCase):
         """
         result = self.ctrl.add_quiz(None,"test",None,None)
         self.assertIsNone(result, 'None quiz ID, Quiz_controller.py, Line 63')
-        
 
+    def test_expose_failure_02(self):
+        """
+        None quiz ID, Quiz_controller.py, Line 64
+        """
+        result = self.ctrl.add_quiz("Valid Title","Valid Text","Invalid Date",None)
+        self.assertIsNone(result, 'Invalid Date should have raised exception and quiz should not have been saved')
+        
+    def test_expose_failure_03(self):
+        """
+        None quiz ID, Quiz_controller.py, Line 92
+        """
+        quizId = self.ctrl.add_quiz("Valid Title","Valid Text",None,None)
+        questionId = self.ctrl.add_question(quizId, "Question 1", "Text for Question 1")
+        answerId = self.ctrl.add_answer(questionId,"Answer Text", "INVALID BOOLEAN")
+        self.assertIsNone(answerId, 'Invalid Boolean should have raised exception and answer should not have been saved')
+        
 
 if __name__ == '__main__':
     unittest.main()
